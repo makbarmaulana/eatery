@@ -1,0 +1,35 @@
+@use 'style' as *;
+
+@media screen and (min-width: 650px) {
+  html {
+    font-size: 16px;
+  }
+
+  .app-bar {
+    padding: 1rem 2rem;
+  }
+
+  .app-bar__nav-menu {
+    display: none;
+  }
+
+  .app-bar__nav {
+    &-list {
+      all: unset;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    &-item {
+      a {
+        color: $primary-color;
+
+        &:hover {
+          color: $accent-color;
+          background-color: transparent;
+        }
+      }
+    }
+  }
+}

@@ -9,13 +9,25 @@
   <meta name="theme-color" content="#F48020" />
 
   <link rel="icon" href="./favicon.png" />
-  <link rel="apple-touch-icon" href="/icon/eatery-192x192.png" />
+  <link rel="apple-touch-icon" href="./icon/eatery-192x192.png" />
 
   <title>Eatery</title>
 </head>
 
 <body>
-  <h1>Hello World!</h1>
+  <a tabindex="0" href="#mainContent" class="skip-link">Skip to content</a>
+  <header class="app-bar">
+    <div class="app-bar__brand">
+      <img  src="./eatery.png" alt="Eatery Logo">
+    </div>
+
+    <nav id="navigationDrawer" class="app-bar__nav">
+      <hamburger-menu id="hamburgerMenu" class="app-bar__nav-menu"></hamburger-menu>
+      <nav-list class="app-bar__nav-list"></nav-list>
+    </nav>
+  </header>
+
+  <main id="mainContent" class="main-content"></main>
 </body>
 
 </html>
