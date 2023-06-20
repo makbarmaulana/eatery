@@ -1,11 +1,14 @@
+import routes from '../routes/routes';
+import UrlParser from '../routes/url-parser';
 import DrawerInitiator from '../utils/drawer-initiator';
 import './components/Header/hamburger-menu';
 import './components/Header/nav-list';
 
 class App {
-  constructor({ button, drawer }) {
+  constructor({ button, drawer, content }) {
     this._button = button;
     this._drawer = drawer;
+    this._content = content;
 
     this._initialAppShell();
   }
@@ -15,6 +18,14 @@ class App {
       button: this._button,
       drawer: this._drawer,
     });
+  }
+
+  async renderPage() {
+    const url = UrlParser.parseActiveUrlWithCombiner();
+    const page = routes[url];
+
+    this._content.innerHTML = await page.render();
+    await page.afterRender();
   }
 }
 
