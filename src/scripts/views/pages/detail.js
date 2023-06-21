@@ -1,7 +1,9 @@
 const Detail = {
   async render() {
     return `
-      <h2>Detail page</h2>
+      <main id="mainContent" class="main-content">
+        <h2>Detail page</h2>
+      </main>
     `;
   },
 

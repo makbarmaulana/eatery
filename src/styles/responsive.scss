@@ -21,15 +21,8 @@
       gap: 1rem;
     }
 
-    &-item {
-      a {
-        color: $primary-color;
-
-        &:hover {
-          color: $accent-color;
-          background-color: transparent;
-        }
-      }
+    &-item a:hover {
+      background-color: transparent;
     }
   }
 }

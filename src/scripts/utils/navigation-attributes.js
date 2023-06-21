@@ -1,11 +1,11 @@
 const navigationAttributes = [
   {
     label: 'Home',
-    path: '/',
+    path: '/#',
   },
   {
     label: 'Favorite',
-    path: '#/favorite',
+    path: '/#/favorite',
   },
   {
     label: 'About',

@@ -1,7 +1,9 @@
 const Favorite = {
   async render() {
     return `
-      <h2>Favorite page</h2>
+      <main id="mainContent" class="main-content">
+        <h2>Favorite page</h2>
+      </main>
     `;
   },
 
