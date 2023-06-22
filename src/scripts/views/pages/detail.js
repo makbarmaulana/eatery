@@ -1,3 +1,6 @@
+import RestaurantAPISource from '../../data/restaurantapi-source';
+import UrlParser from '../../routes/url-parser';
+
 const Detail = {
   async render() {
     return `
@@ -7,8 +10,11 @@ const Detail = {
     `;
   },
 
-  // eslint-disable-next-line no-empty-function
-  async afterRender() {},
+  async afterRender() {
+    const url = UrlParser.parseActiveUrlWithoutCombiner();
+    const restaurant = await RestaurantAPISource.getRestaurantDetail(url.id);
+    console.log(restaurant);
+  },
 };
 
 export default Detail;
