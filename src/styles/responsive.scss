@@ -1,0 +1,28 @@
+@use 'style' as *;
+
+@media screen and (min-width: 600px) {
+  .app-bar {
+    padding: 1rem 2rem;
+  }
+
+  .app-bar__nav-menu {
+    display: none;
+  }
+
+  .app-bar__nav {
+    &-list {
+      all: unset;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    &-item a:hover {
+      background-color: transparent;
+    }
+  }
+
+  .content-list {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+}
