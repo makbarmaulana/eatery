@@ -32,7 +32,8 @@ class ContentItem extends HTMLElement {
         </div>
         <p class="content-item__detail-description">${description}</p>
         <p class="content-item__detail-city">${city}</p>
-        `;
+      </div>
+      `;
 
     this.classList.add('content-item');
   }
