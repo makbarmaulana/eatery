@@ -63,6 +63,29 @@ html {
   background-color: $primary-color;
 }
 
+.like-button {
+  width: 55px;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $secondary-color;
+
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  border-radius: 50%;
+  border: 0;
+
+  color: $primary-color;
+  font-size: 18px;
+  cursor: pointer;
+
+  & i.fa-heart {
+    color: red;
+  }
+}
+
 /*
   * Skip to content
 */
@@ -484,5 +507,16 @@ html {
         }
       }
     }
+  }
+}
+
+.favorite__header {
+  padding: calc($app-bar-height + 1em) 0 1em;
+  text-align: center;
+
+  h2 {
+    font-size: 1.5rem;
+    font-weight: 500;
+    user-select: none;
   }
 }
