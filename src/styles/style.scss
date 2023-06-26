@@ -295,7 +295,6 @@ html {
   grid-template-columns: 1fr;
   gap: 2em;
   padding: 1em;
-  padding-bottom: 3em;
 
   .content-item {
     margin: 0 auto;
@@ -518,5 +517,23 @@ html {
     font-size: 1.5rem;
     font-weight: 500;
     user-select: none;
+  }
+}
+
+/*
+ * Footer
+*/
+
+.footer {
+  display: block;
+  text-align: center;
+
+  .copyright {
+    padding: 1.5em;
+    text-align: center;
+  }
+
+  .author {
+    font-weight: 500;
   }
 }
