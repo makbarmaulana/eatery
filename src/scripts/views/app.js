@@ -1,14 +1,16 @@
 import routes from '../routes/routes';
 import UrlParser from '../routes/url-parser';
 import DrawerInitiator from '../utils/drawer-initiator';
-import './components/Header/app-bar';
-import './components/Footer/footer-bar';
+import SkipLinkInitiator from '../utils/skip-link-initiator';
 
 class App {
-  constructor({ button, drawer, content }) {
+  constructor({
+    button, drawer, content, skipLink,
+  }) {
     this._button = button;
     this._drawer = drawer;
     this._content = content;
+    this._skipLink = skipLink;
 
     this._initialAppShell();
   }
@@ -17,6 +19,11 @@ class App {
     DrawerInitiator.init({
       button: this._button,
       drawer: this._drawer,
+    });
+
+    SkipLinkInitiator.init({
+      skipLink: this._skipLink,
+      content: this._content,
     });
   }
 

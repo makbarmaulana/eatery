@@ -5,20 +5,21 @@ class ContentList extends HTMLElement {
     this.render();
   }
 
-  set restaurants(restaurants) {
-    this._restaurants = restaurants;
+  set datas(datas) {
+    this._datas = datas;
     this.render();
   }
 
   render() {
     this.innerHTML = '';
-    this._restaurants?.forEach((restaurant) => {
+    this._datas?.forEach((restaurant) => {
       const restaurantItemElement = document.createElement('content-item');
-      restaurantItemElement.setAttribute('tabindex', '0');
-      restaurantItemElement.restaurant = restaurant;
+      restaurantItemElement.data = restaurant;
 
       this.appendChild(restaurantItemElement);
     });
+
+    this.classList.add('content-list');
   }
 }
 

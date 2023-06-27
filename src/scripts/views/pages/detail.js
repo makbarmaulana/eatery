@@ -17,10 +17,10 @@ const Detail = {
 
   async afterRender() {
     const url = UrlParser.parseActiveUrlWithoutCombiner();
-    const restaurantData = await RestaurantAPISource.getRestaurantDetail(url.id);
+    const restaurant = await RestaurantAPISource.getRestaurantDetail(url.id);
     const restaurantContainer = document.querySelector('content-detail');
 
-    restaurantContainer.restaurant = restaurantData;
+    restaurantContainer.data = restaurant;
 
     TabBarInitiator.init({
       button: document.querySelector('.tab-bar'),
@@ -30,16 +30,16 @@ const Detail = {
     LikeButtonInitiator.init({
       button: document.querySelector('#likeButton'),
       restaurant: {
-        id: restaurantData.id,
-        name: restaurantData.name,
-        description: restaurantData.description,
-        pictureId: restaurantData.pictureId,
-        categories: restaurantData.categories,
-        city: restaurantData.city,
-        address: restaurantData.address,
-        rating: restaurantData.rating,
-        reviews: restaurantData.customerReviews,
-        menus: restaurantData.menus,
+        id: restaurant.id,
+        name: restaurant.name,
+        description: restaurant.description,
+        pictureId: restaurant.pictureId,
+        categories: restaurant.categories,
+        city: restaurant.city,
+        address: restaurant.address,
+        rating: restaurant.rating,
+        reviews: restaurant.customerReviews,
+        menus: restaurant.menus,
       },
     });
   },

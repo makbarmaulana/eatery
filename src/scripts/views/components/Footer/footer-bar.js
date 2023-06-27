@@ -6,7 +6,7 @@ class FooterBar extends HTMLElement {
   render() {
     this.innerHTML = `
       <p class="copyright">
-        Copyright &copy; 2023 <span class="author"> M Akbar Maulana</span> - Eatery
+        Copyright &copy; 2023 <span class="author"> M Akbar Maulana</span>
       </p>
     `;
   }

@@ -10,7 +10,6 @@ class NavList extends HTMLElement {
     this.innerHTML = '';
     navigationAttributes?.forEach((attribute) => {
       const navItemElement = document.createElement('nav-item');
-      navItemElement.classList.add('app-bar__nav-item');
       navItemElement.attribute = attribute;
 
       this.appendChild(navItemElement);

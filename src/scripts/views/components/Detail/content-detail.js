@@ -5,61 +5,67 @@ class ContentDetail extends HTMLElement {
     this.render();
   }
 
-  set restaurant(restaurant) {
-    this._restaurant = restaurant;
+  set data(data) {
+    this._data = data;
     this.render();
   }
 
   render() {
-    this.innerHTML = '';
-
-    if (!this._restaurant) {
+    if (!this._data) {
       return;
     }
 
     const {
-      name, description, pictureId, city, address, rating, customerReviews, menus,
-    } = this._restaurant;
+      name, categories, description, pictureId, city, address, rating, customerReviews, menus,
+    } = this._data;
 
     this.innerHTML = `
       <div class="thumbnail">
-        <img src=${CONFIG.BASE_IMAGE_URL('small', pictureId)} alt=${name} loading="lazy">
+        <img src="${CONFIG.BASE_IMAGE_URL('small', pictureId)}" alt="${name}" loading="lazy">
       </div>
 
       <div class="tab-bar">
-        <button id="tab-1" class="tab-bar__button active">Detail</button>
-        <button id="tab-2" class="tab-bar__button">Menu</button>
-        <button id="tab-3" class="tab-bar__button">Reviews (${customerReviews ? customerReviews.length : 0})</button>
+        <button type="button" id="tab-1" tabindex="0" class="tab-bar__button active">Detail</button>
+        <button type="button" id="tab-2" tabindex="0" class="tab-bar__button">Menu</button>
+        <button type="button" id="tab-3" tabindex="0" class="tab-bar__button">Reviews</button>
       </div>
 
-      <div class="tab-content">
-        <div id="tab-1" class="tab-content__item detail active">
-          <h3 class="detail-name">${name}</h3>
-          <div class="detail-rating">
-            <span class="detail-rating-star" style="--rating: ${rating};"></span>
-            <p class="detail-rating-amount">${rating}</p>
-          </div>
-          <p class="detail-address">${address}, ${city}</p>
-          <p class="detail-description">${description}</p>
+      <section class="tab-content">
+        <article id="tab-1" class="tab-content__item detail active">
+          <h3 class="name">${name}</h3>
+
+          <div class="rating">
+          <span class="rating-star" style="--rating: ${rating};"></span>
+          <p class="rating-amount">${rating}</p>
         </div>
 
-        <div id="tab-2" class="tab-content__item menus">
+          <p class="categories">${ContentDetail._renderCategories(categories)}</p>
+          <p class="address">${address}, ${city}</p>
+          <p class="description">${description}</p>
+        </article>
+
+        <article id="tab-2" class="tab-content__item menus">
           ${ContentDetail._renderMenus(menus.foods, 'foods')}
           ${ContentDetail._renderMenus(menus.drinks, 'drinks')}
-        </div>
+        </article>
 
-        <div id="tab-3" class="tab-content__item reviews">
+        <article id="tab-3" class="tab-content__item reviews">
+          <h4 class="review-amount">(${customerReviews ? customerReviews.length : 0}) Reviews</h4>
           ${ContentDetail._renderReviews(customerReviews)}
-        </div>
-      </div>
+        </article>
+      </section>
     `;
 
     this.classList.add('content-detail');
   }
 
+  static _renderCategories(categories) {
+    return categories.map((category) => category.name).join(', ');
+  }
+
   static _renderMenus(menus, category) {
     if (!menus || menus.length === 0) {
-      return '<p>No menu available</p>';
+      return '<p>No menus available</p>';
     }
 
     const menuHTML = `
@@ -67,7 +73,7 @@ class ContentDetail extends HTMLElement {
         <h4 class="menu-category__title">${category}</h4>
         <ul class="menu-list">
           ${menus.map((menuItem) => `
-            <li>${menuItem.name}</li>
+            <li class="menu-item">- ${menuItem.name}</li>
           `).join('')}
         </ul>
       </div>
@@ -83,9 +89,9 @@ class ContentDetail extends HTMLElement {
 
     const reviewsHTML = reviews.map((review) => `
       <div class="review">
-        <h5 class="review-username">${review.name}</h5>
-        <p class="review-date">${review.date}</p>
-        <p class="review-content">"${review.review}"</p>
+        <h5 class="username">${review.name}</h5>
+        <p class="date">${review.date}</p>
+        <p class="content">"${review.review}"</p>
       </div>
     `).join('');
 

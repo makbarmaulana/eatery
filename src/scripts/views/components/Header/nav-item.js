@@ -15,9 +15,10 @@ class NavItem extends HTMLElement {
 
     this.innerHTML = `
       <a
-        href=${path}
-        ${target ? `target=${target}` : ''}
-        ${rel ? `rel=${rel}` : ''}
+        class="nav-link"
+        href="${path}"
+        ${target ? `target="${target}"` : ''}
+        ${rel ? `rel="${rel}"` : ''}
       >
         ${label}
       </a>
