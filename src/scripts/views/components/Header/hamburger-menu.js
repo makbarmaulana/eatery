@@ -6,7 +6,7 @@ class HamburgerMenu extends HTMLElement {
   render() {
     this.innerHTML = `
       <button
-        class="app-bar__nav-menu-button"
+        class="nav-menu-button"
         type="button"
         id="hamburgerButton"
         aria-label="toggle menu"

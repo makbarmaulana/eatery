@@ -13,8 +13,8 @@ class AppBar extends HTMLElement {
       </div>
 
       <nav id="navigationDrawer" class="app-bar__nav">
-        <hamburger-menu id="hamburgerMenu" class="app-bar__nav-menu"></hamburger-menu>
-        <nav-list class="app-bar__nav-list"></nav-list>
+        <hamburger-menu id="hamburgerMenu" class="nav-menu"></hamburger-menu>
+        <nav-list class="nav-list"></nav-list>
       </nav>
     `;
   }

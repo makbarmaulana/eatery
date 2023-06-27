@@ -6,9 +6,11 @@ class HeroSection extends HTMLElement {
   render() {
     this.innerHTML = `
       <div class="hero__headline">
-        <h2 tabindex="0">Discover Restaurants in your City</h2>
+        <h1>Discover Restaurants in your City</h1>
       </div>
     `;
+
+    this.classList.add('hero');
   }
 }
 

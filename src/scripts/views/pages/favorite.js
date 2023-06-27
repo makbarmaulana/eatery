@@ -5,20 +5,20 @@ const Favorite = {
   async render() {
     return `
       <main id="mainContent" class="main-content">
-        <div class="favorite__header">
+        <div class="main-content__favorite-header">
           <h2>Favorite Restautants</h2>
         </div>
 
-        <content-list class="content-list"></content-list>
+        <content-list></content-list>
       </main>
     `;
   },
 
   async afterRender() {
-    const restaurantsData = await FavoriteRestaurantIdb.getAllRestaurants();
+    const restaurant = await FavoriteRestaurantIdb.getAllRestaurants();
     const restaurantsContainer = document.querySelector('content-list');
 
-    restaurantsContainer.restaurants = restaurantsData;
+    restaurantsContainer.datas = restaurant;
   },
 };
 
