@@ -12,14 +12,17 @@ class ContentReviews extends HTMLElement {
   }
 
   render() {
+    if (!this._reviews) return;
+    const reviews = this._reviews;
+
     this.innerHTML = `
       <add-review></add-review>
-      <h4 class="review-amount">(${this._reviews ? this._reviews.length : 0}) Reviews</h4>
+      <h4 class="review-amount">(${reviews ? reviews.length : 0}) Reviews</h4>
       <div class="review-list"></div>
     `;
 
     const reviewListElement = document.querySelector('.review-list');
-    this._reviews?.forEach((review) => {
+    reviews?.forEach((review) => {
       const reviewItemElement = document.createElement('review-item');
       reviewItemElement.review = review;
 

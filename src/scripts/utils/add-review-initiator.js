@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 import RestaurantAPISource from '../data/restaurantapi-source';
 
 const AddReviewInitiator = {
@@ -17,7 +18,6 @@ const AddReviewInitiator = {
     const review = reviewInput.value;
 
     if (name.trim() === '' || review.trim() === '') {
-      // eslint-disable-next-line no-alert
       alert('Name or Review must be filled');
       return;
     }
@@ -36,7 +36,8 @@ const AddReviewInitiator = {
       this._clearFormInputs();
       this._updateContentReviews(reviews);
     } catch (error) {
-      console.log(error.message);
+      alert(error.message);
+      console.error(error.message);
     }
   },
 

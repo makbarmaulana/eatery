@@ -4,6 +4,7 @@ import '../styles/responsive.scss';
 import './views/components/Header/app-bar';
 import './views/components/Footer/footer-bar';
 import App from './views/app';
+import swRegister from './sw-register';
 
 const app = new App({
   button: document.querySelector('#hamburgerMenu'),
@@ -18,4 +19,5 @@ window.addEventListener('hashchange', () => {
 
 window.addEventListener('load', () => {
   app.renderPage();
+  swRegister();
 });

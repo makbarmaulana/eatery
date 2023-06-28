@@ -10,14 +10,13 @@ class ContentMenus extends HTMLElement {
 
   render() {
     if (!this._menus) return;
+    const menuCategories = Object.keys(this._menus);
 
-    const categories = Object.keys(this._menus);
-
-    this.innerHTML = categories.map((category) => `
+    this.innerHTML = menuCategories.map((menuCategory) => `
       <div class="menu">
-        <h4 class="menu-category__title">${category}</h4>
+        <h4 class="menu-category__title">${menuCategory}</h4>
         <ul class="menu-list">
-        ${this._menus[category].map((item) => `<li>${item.name}</li>`).join('')}
+        ${this._menus[menuCategory].map((item) => `<li>- ${item.name}</li>`).join('')}
         </ul>
       </div>
     `).join('');
