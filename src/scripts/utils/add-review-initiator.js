@@ -17,7 +17,8 @@ const AddReviewInitiator = {
     const review = reviewInput.value;
 
     if (name.trim() === '' || review.trim() === '') {
-      alert('Name or review must be filled');
+      // eslint-disable-next-line no-alert
+      alert('Name or Review must be filled');
       return;
     }
 
@@ -47,7 +48,7 @@ const AddReviewInitiator = {
   },
 
   _updateContentReviews(reviews) {
-    const contentReviewElement = document.querySelector('content-review');
+    const contentReviewElement = document.querySelector('content-reviews');
     contentReviewElement.reviews = reviews;
   },
 };

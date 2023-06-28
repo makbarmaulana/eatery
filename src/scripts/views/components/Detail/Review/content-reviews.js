@@ -1,7 +1,7 @@
 import './add-review';
 import './review-item';
 
-class ContentReview extends HTMLElement {
+class ContentReviews extends HTMLElement {
   connectedCallback() {
     this.render();
   }
@@ -28,4 +28,4 @@ class ContentReview extends HTMLElement {
   }
 }
 
-customElements.define('content-review', ContentReview);
+customElements.define('content-reviews', ContentReviews);

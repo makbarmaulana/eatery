@@ -20,7 +20,6 @@ const Detail = {
     const url = UrlParser.parseActiveUrlWithoutCombiner();
     const restaurant = await RestaurantAPISource.getRestaurantDetail(url.id);
     const restaurantContainer = document.querySelector('content-detail');
-    console.log(restaurant.customerReviews);
 
     restaurantContainer.data = restaurant;
 
