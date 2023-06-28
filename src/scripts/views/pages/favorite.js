@@ -1,5 +1,7 @@
 import '../components/Main/content-list';
+import '../components/loader-element';
 import FavoriteRestaurantIdb from '../../data/favorite-restaurant-idb';
+import LoaderIndicator from '../../utils/loader-initiator';
 
 const Favorite = {
   async render() {
@@ -15,10 +17,17 @@ const Favorite = {
   },
 
   async afterRender() {
-    const restaurant = await FavoriteRestaurantIdb.getAllRestaurants();
     const restaurantsContainer = document.querySelector('content-list');
+    LoaderIndicator.init({ container: restaurantsContainer });
 
-    restaurantsContainer.datas = restaurant;
+    try {
+      const restaurant = await FavoriteRestaurantIdb.getAllRestaurants();
+      restaurantsContainer.datas = restaurant;
+    } catch (error) {
+      restaurantsContainer.renderError();
+    }
+
+    LoaderIndicator.hide();
   },
 };
 

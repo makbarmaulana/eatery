@@ -1,6 +1,8 @@
 import '../components/Hero/hero-section';
 import '../components/Main/content-list';
+import '../components/loader-element';
 import RestaurantAPISource from '../../data/restaurantapi-source';
+import LoaderIndicator from '../../utils/loader-initiator';
 
 const Home = {
   async render() {
@@ -18,10 +20,17 @@ const Home = {
   },
 
   async afterRender() {
-    const restaurants = await RestaurantAPISource.getAllRestaurants();
     const restaurantsContainer = document.querySelector('content-list');
+    LoaderIndicator.init({ container: restaurantsContainer });
 
-    restaurantsContainer.datas = restaurants;
+    try {
+      const restaurants = await RestaurantAPISource.getAllRestaurants();
+      restaurantsContainer.datas = restaurants;
+    } catch (error) {
+      restaurantsContainer.renderError();
+    }
+
+    LoaderIndicator.hide();
   },
 };
 
