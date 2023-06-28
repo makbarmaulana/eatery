@@ -16,10 +16,22 @@ class ContentMenus extends HTMLElement {
       <div class="menu">
         <h4 class="menu-category__title">${menuCategory}</h4>
         <ul class="menu-list">
-        ${this._menus[menuCategory].map((item) => `<li>- ${item.name}</li>`).join('')}
+          ${ContentMenus._renderMenus(menuCategory, this._menus)}
         </ul>
       </div>
     `).join('');
+  }
+
+  static _renderMenus(menuCategory, menus) {
+    let menuHTML = '';
+
+    if (menuCategory && menuCategory.length > 0) {
+      menuHTML = menus[menuCategory].map((item) => `<li>- ${item.name}</li>`).join('');
+    } else {
+      menuHTML = '<li>No Menu Found</li>';
+    }
+
+    return menuHTML;
   }
 }
 

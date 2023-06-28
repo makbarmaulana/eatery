@@ -12,7 +12,6 @@ class ContentReviews extends HTMLElement {
   }
 
   render() {
-    if (!this._reviews) return;
     const reviews = this._reviews;
 
     this.innerHTML = `
@@ -22,12 +21,18 @@ class ContentReviews extends HTMLElement {
     `;
 
     const reviewListElement = document.querySelector('.review-list');
-    reviews?.forEach((review) => {
-      const reviewItemElement = document.createElement('review-item');
-      reviewItemElement.review = review;
 
+    if (reviews && reviews.length > 0) {
+      reviews?.forEach((review) => {
+        const reviewItemElement = document.createElement('review-item');
+        reviewItemElement.review = review;
+        reviewListElement.appendChild(reviewItemElement);
+      });
+    } else {
+      const reviewItemElement = document.createElement('review-item');
+      reviewItemElement.textContent = 'No Reviews Found';
       reviewListElement.appendChild(reviewItemElement);
-    });
+    }
   }
 }
 

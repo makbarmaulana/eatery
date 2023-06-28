@@ -13,6 +13,10 @@ class ContentDetail extends HTMLElement {
     this.render();
   }
 
+  renderError() {
+    this.innerHTML = '<h2 class="error-message">Failed to Fetch Data! <br/> Please Check Your Internet Connection</h2>';
+  }
+
   render() {
     if (!this._data) return;
     const {

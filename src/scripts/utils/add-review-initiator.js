@@ -3,24 +3,19 @@ import RestaurantAPISource from '../data/restaurantapi-source';
 
 const AddReviewInitiator = {
   init({ form, restaurantId }) {
-    this.form = form;
-    this.restaurantId = restaurantId;
+    this._form = form;
+    this._restaurantId = restaurantId;
 
-    this.form.addEventListener('submit', this._submitReview.bind(this));
+    this._form.addEventListener('submit', this._submitReview.bind(this));
   },
 
   _submitReview(event) {
     event.preventDefault();
 
-    const nameInput = this.form.querySelector('.form-name');
-    const reviewInput = this.form.querySelector('.form-review');
+    const nameInput = this._form.querySelector('.form-name');
+    const reviewInput = this._form.querySelector('.form-review');
     const name = nameInput.value;
     const review = reviewInput.value;
-
-    if (name.trim() === '' || review.trim() === '') {
-      alert('Name or Review must be filled');
-      return;
-    }
 
     this._addReview(name, review);
   },
@@ -28,7 +23,7 @@ const AddReviewInitiator = {
   async _addReview(name, review) {
     try {
       const reviews = await RestaurantAPISource.addReviewRestaurant({
-        id: this.restaurantId,
+        id: this._restaurantId,
         name,
         review,
       });
@@ -42,8 +37,8 @@ const AddReviewInitiator = {
   },
 
   _clearFormInputs() {
-    const nameInput = this.form.querySelector('.form-name');
-    const reviewInput = this.form.querySelector('.form-review');
+    const nameInput = this._form.querySelector('.form-name');
+    const reviewInput = this._form.querySelector('.form-review');
     nameInput.value = '';
     reviewInput.value = '';
   },

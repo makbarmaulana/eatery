@@ -9,6 +9,7 @@ class ReviewItem extends HTMLElement {
   }
 
   render() {
+    if (!this._review) return;
     const { name, review, date } = this._review;
 
     this.innerHTML = `
