@@ -9,10 +9,12 @@ class ReviewItem extends HTMLElement {
   }
 
   render() {
+    const { name, review, date } = this._review;
+
     this.innerHTML = `
-      <h5 class="username">${this._review?.name}</h5>
-      <p class="date">${this._review?.date}</p>
-      <p class="content">"${this._review?.review}"</p>
+      <h5 class="username">${name}</h5>
+      <p class="date">${date}</p>
+      <p class="content">"${review}"</p>
     `;
 
     this.classList.add('review-item');

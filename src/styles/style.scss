@@ -9,7 +9,6 @@ $secondary-color: #dedede;
 $white-color: #fff;
 $black-color: #000;
 $onyx-color: #25252d;
-$dark-grey-color: #534d43;
 
 $star-color: $secondary-color;
 $star-color-fill: #ffcc00;
@@ -79,7 +78,7 @@ a {
   background: $accent-color;
   font-size: 1.125rem;
   color: $white-color;
-  z-index: 100;
+  z-index: 99;
 
   &:focus {
     top: 0.5em;
@@ -252,6 +251,7 @@ a {
   @include item-center();
   text-align: center;
 
+  // Overlay
   &::after {
     position: absolute;
     top: 0;
@@ -445,8 +445,9 @@ a {
   .tab-content {
     &__item {
       padding: 1em;
+
       // Tab Content Detail
-      &.detail {
+      &.details {
         &.active {
           display: grid;
         }
@@ -510,7 +511,7 @@ a {
           text-transform: uppercase;
           border-bottom: 1px solid $white-color;
           padding-bottom: 0.5rem;
-          margin-bottom: 1rem;
+          margin-bottom: 1em;
         }
 
         .menu-list {
@@ -523,8 +524,6 @@ a {
 
       // Tab Content Reviews
       &.reviews {
-        display: block;
-
         &.active {
           display: flex;
         }
@@ -537,6 +536,33 @@ a {
           display: flex;
           flex-direction: column;
           gap: 1em;
+
+          .form-name {
+            padding: 0.5rem;
+            border-radius: 0.5em;
+          }
+
+          .form-review {
+            padding: 0.5rem;
+            border-radius: 0.5em;
+            height: 10em;
+          }
+
+          .form-submit {
+            padding: 0.5rem;
+            border-radius: 0.5em;
+            font-weight: 600;
+            color: $secondary-color;
+            background-color: rgba($accent-color, 0.7);
+            border-color: transparent;
+            transition: background 150ms ease;
+            cursor: pointer;
+
+            &:hover,
+            &:focus {
+              background-color: $accent-color;
+            }
+          }
         }
 
         .review-amount {
