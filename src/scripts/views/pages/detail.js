@@ -4,6 +4,7 @@ import RestaurantAPISource from '../../data/restaurantapi-source';
 import UrlParser from '../../routes/url-parser';
 import TabBarInitiator from '../../utils/tab-bar-initiator';
 import LikeButtonInitiator from '../../utils/like-button-initiator';
+import AddReviewInitiator from '../../utils/add-review-initiator';
 
 const Detail = {
   async render() {
@@ -19,12 +20,18 @@ const Detail = {
     const url = UrlParser.parseActiveUrlWithoutCombiner();
     const restaurant = await RestaurantAPISource.getRestaurantDetail(url.id);
     const restaurantContainer = document.querySelector('content-detail');
+    console.log(restaurant.customerReviews);
 
     restaurantContainer.data = restaurant;
 
     TabBarInitiator.init({
       button: document.querySelector('.tab-bar'),
       content: document.querySelector('.tab-content'),
+    });
+
+    AddReviewInitiator.init({
+      form: document.querySelector('#addReviewForm'),
+      restaurantId: restaurant.id,
     });
 
     LikeButtonInitiator.init({
