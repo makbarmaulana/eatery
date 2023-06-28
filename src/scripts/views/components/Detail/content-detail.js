@@ -1,4 +1,5 @@
 import CONFIG from '../../../globals/config';
+import './Review/content-review';
 
 class ContentDetail extends HTMLElement {
   connectedCallback() {
@@ -25,13 +26,13 @@ class ContentDetail extends HTMLElement {
       </div>
 
       <div class="tab-bar">
-        <button type="button" id="tab-1" tabindex="0" class="tab-bar__button active">Detail</button>
+        <button type="button" id="tab-1" tabindex="0" class="tab-bar__button">Detail</button>
         <button type="button" id="tab-2" tabindex="0" class="tab-bar__button">Menu</button>
-        <button type="button" id="tab-3" tabindex="0" class="tab-bar__button">Reviews</button>
+        <button type="button" id="tab-3" tabindex="0" class="tab-bar__button active">Reviews</button>
       </div>
 
       <section class="tab-content">
-        <article id="tab-1" class="tab-content__item detail active">
+        <article id="tab-1" class="tab-content__item detail">
           <h3 class="name">${name}</h3>
 
           <div class="rating">
@@ -49,14 +50,14 @@ class ContentDetail extends HTMLElement {
           ${ContentDetail._renderMenus(menus.drinks, 'drinks')}
         </article>
 
-        <article id="tab-3" class="tab-content__item reviews">
-          <h4 class="review-amount">(${customerReviews ? customerReviews.length : 0}) Reviews</h4>
-          ${ContentDetail._renderReviews(customerReviews)}
-        </article>
+        <content-review id="tab-3" class="tab-content__item reviews active"></content-review>
       </section>
     `;
 
     this.classList.add('content-detail');
+
+    const contentReviewElement = document.querySelector('content-review');
+    contentReviewElement.reviews = customerReviews;
   }
 
   static _renderCategories(categories) {
@@ -80,22 +81,6 @@ class ContentDetail extends HTMLElement {
     `;
 
     return menuHTML;
-  }
-
-  static _renderReviews(reviews) {
-    if (!reviews || reviews.length === 0) {
-      return '<p>No reviews available</p>';
-    }
-
-    const reviewsHTML = reviews.map((review) => `
-      <div class="review">
-        <h5 class="username">${review.name}</h5>
-        <p class="date">${review.date}</p>
-        <p class="content">"${review.review}"</p>
-      </div>
-    `).join('');
-
-    return reviewsHTML;
   }
 }
 
