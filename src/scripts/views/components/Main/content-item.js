@@ -17,7 +17,7 @@ class ContentItem extends HTMLElement {
     } = this._data;
 
     this.innerHTML = `
-        <a href="/#/detail/${id}">
+        <a href="/#/detail/${id}" aria-label="${name}">
           <div class="thumbnail">
             <img src="${CONFIG.BASE_IMAGE_URL('small', pictureId)}" alt="${name}" loading="lazy">
           </div>

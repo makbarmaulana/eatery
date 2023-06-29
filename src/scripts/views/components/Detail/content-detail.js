@@ -15,7 +15,7 @@ class ContentDetail extends HTMLElement {
   }
 
   renderError() {
-    this.innerHTML = '<h2 class="error-message">Unable to find Content</h2>';
+    this.innerHTML = '<h2 class="error-message" role="alert">Unable to find Content</h2>';
   }
 
   render() {
@@ -31,9 +31,9 @@ class ContentDetail extends HTMLElement {
       </div>
 
       <div class="tab-bar">
-        <button type="button" data-id="tab1" tabindex="0" class="tab-bar__button active">Detail</button>
-        <button type="button" data-id="tab2" tabindex="0" class="tab-bar__button">Menu</button>
-        <button type="button" data-id="tab3" tabindex="0" class="tab-bar__button">Reviews</button>
+        <button type="button" tabindex="0" class="tab-bar__button active" aria-controls="tab1" data-id="tab1">Detail</button>
+        <button type="button" tabindex="0" class="tab-bar__button" aria-controls="tab2" data-id="tab2">Menu</button>
+        <button type="button" tabindex="0" class="tab-bar__button" aria-controls="tab3" data-id="tab3">Reviews</button>
       </div>
 
       <section class="tab-section">

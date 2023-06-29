@@ -10,6 +10,7 @@ class HamburgerMenu extends HTMLElement {
         type="button"
         id="hamburgerButton"
         aria-label="toggle menu"
+        aria-controls="navigationDrawer"
         >
           <span></span>
       </button>

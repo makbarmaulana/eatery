@@ -12,12 +12,12 @@ class ContentList extends HTMLElement {
   }
 
   renderError() {
-    this.innerHTML = '<h2 class="error-message">Failed to Fetch Data! <br/> Please Check Your Internet Connection</h2>';
+    this.innerHTML = '<h2 class="error-message" role="alert">Failed to Fetch Data! <br/> Please Check Your Internet Connection</h2>';
   }
 
   render() {
     if (!this._datas || this._datas.length === 0) {
-      this.innerHTML = '<h2 class="error-message">No Content Found</h2>';
+      this.innerHTML = '<h2 class="error-message" role="alert">No Content Found</h2>';
       return;
     }
 

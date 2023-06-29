@@ -14,7 +14,7 @@ class AppBar extends HTMLElement {
 
       <nav id="navigationDrawer" class="app-bar__nav">
         <hamburger-menu id="hamburgerMenu" class="nav-menu"></hamburger-menu>
-        <nav-list class="nav-list"></nav-list>
+        <nav-list class="nav-list" aria-labelledby="navigationDrawer"></nav-list>
       </nav>
     `;
   }

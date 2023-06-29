@@ -19,6 +19,7 @@ class NavItem extends HTMLElement {
         href="${path}"
         ${target ? `target="${target}"` : ''}
         ${rel ? `rel="${rel}"` : ''}
+        aria-label="${label}"
       >
         ${label}
       </a>
