@@ -1,10 +1,11 @@
 import CONFIG from '../../../globals/config';
-import './Details/content-details';
-import './Menus/content-menus';
-import './Review/content-reviews';
+import './SectionDetails/section-details';
+import './SectionMenus/section-menus';
+import './SectionReview/section-reviews';
 
 class ContentDetail extends HTMLElement {
   connectedCallback() {
+    this.classList.add('content-detail');
     this.render();
   }
 
@@ -14,11 +15,12 @@ class ContentDetail extends HTMLElement {
   }
 
   renderError() {
-    this.innerHTML = '<h2 class="error-message">Failed to Fetch Data! <br/> Please Check Your Internet Connection</h2>';
+    this.innerHTML = '<h2 class="error-message">Unable to find Content</h2>';
   }
 
   render() {
     if (!this._data) return;
+
     const {
       name, pictureId, menus, customerReviews,
     } = this._data;
@@ -34,22 +36,20 @@ class ContentDetail extends HTMLElement {
         <button type="button" data-id="tab3" tabindex="0" class="tab-bar__button">Reviews</button>
       </div>
 
-      <section class="tab-content">
-        <content-details id="tab1" class="tab-content__item details active"></content-details>
-        <content-menus id="tab2" class="tab-content__item menus"></content-menus>
-        <content-reviews id="tab3" class="tab-content__item reviews"></content-reviews>
+      <section class="tab-section">
+        <section-details id="tab1" class="tab-section__item details active"></section-details>
+        <section-menus id="tab2" class="tab-section__item menus"></section-menus>
+        <section-reviews id="tab3" class="tab-section__item reviews"></section-reviews>
       </section>
     `;
 
-    this.classList.add('content-detail');
-
-    const contentDetailsElement = document.querySelector('content-details');
+    const contentDetailsElement = document.querySelector('section-details');
     contentDetailsElement.details = this._data;
 
-    const contentMenusElement = document.querySelector('content-menus');
+    const contentMenusElement = document.querySelector('section-menus');
     contentMenusElement.menus = menus;
 
-    const contentReviewsElement = document.querySelector('content-reviews');
+    const contentReviewsElement = document.querySelector('section-reviews');
     contentReviewsElement.reviews = customerReviews;
   }
 }

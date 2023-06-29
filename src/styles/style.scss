@@ -348,6 +348,7 @@ a {
 */
 
 .main-content {
+  position: relative;
   display: block;
   min-height: 100vh;
   padding: 2em;
@@ -364,6 +365,7 @@ a {
 }
 
 .content-list {
+  position: relative;
   display: grid;
   grid-template-columns: repeat(1fr);
   justify-content: center;
@@ -460,6 +462,7 @@ a {
 */
 
 .content-detail {
+  position: relative;
   display: block;
   border-radius: 0.25em;
   box-shadow: rgba(0, 0, 0, 0.4) 2px 2px 10px 8px;
@@ -506,7 +509,7 @@ a {
     }
   }
 
-  .tab-content {
+  .tab-section {
     &__item {
       padding: 1em;
 

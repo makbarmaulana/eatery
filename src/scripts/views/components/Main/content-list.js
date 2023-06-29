@@ -2,6 +2,7 @@ import './content-item';
 
 class ContentList extends HTMLElement {
   connectedCallback() {
+    this.classList.add('content-list');
     this.render();
   }
 
@@ -17,7 +18,6 @@ class ContentList extends HTMLElement {
   render() {
     if (!this._datas || this._datas.length === 0) {
       this.innerHTML = '<h2 class="error-message">No Content Found</h2>';
-      this.classList.add('content-list');
       return;
     }
 
@@ -28,8 +28,6 @@ class ContentList extends HTMLElement {
 
       this.appendChild(restaurantItemElement);
     });
-
-    this.classList.add('content-list');
   }
 }
 

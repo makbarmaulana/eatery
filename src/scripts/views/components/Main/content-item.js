@@ -2,6 +2,7 @@ import CONFIG from '../../../globals/config';
 
 class ContentItem extends HTMLElement {
   connectedCallback() {
+    this.classList.add('content-item');
     this.render();
   }
 
@@ -34,8 +35,6 @@ class ContentItem extends HTMLElement {
           </div>
         </a>
       `;
-
-    this.classList.add('content-item');
   }
 }
 

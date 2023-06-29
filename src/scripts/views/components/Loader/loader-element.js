@@ -1,6 +1,7 @@
 /* eslint-disable no-plusplus */
 class LoaderElement extends HTMLElement {
   connectedCallback() {
+    this.classList.add('loader');
     this.render();
   }
 
@@ -11,8 +12,6 @@ class LoaderElement extends HTMLElement {
       const div = document.createElement('div');
       this.appendChild(div);
     }
-
-    this.classList.add('loader');
   }
 }
 

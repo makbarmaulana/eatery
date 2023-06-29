@@ -44,7 +44,7 @@ const AddReviewInitiator = {
   },
 
   _updateContentReviews(reviews) {
-    const contentReviewElement = document.querySelector('content-reviews');
+    const contentReviewElement = document.querySelector('section-reviews');
     contentReviewElement.reviews = reviews;
   },
 };

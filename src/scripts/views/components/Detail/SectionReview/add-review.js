@@ -1,5 +1,6 @@
 class AddReview extends HTMLElement {
   connectedCallback() {
+    this.classList.add('add-review');
     this.render();
   }
 
@@ -11,8 +12,6 @@ class AddReview extends HTMLElement {
         <button type="submit" class="form-submit">ADD REVIEW</button>
       </form>
     `;
-
-    this.classList.add('add-review');
   }
 }
 

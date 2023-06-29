@@ -1,6 +1,6 @@
 import '../components/Hero/hero-section';
 import '../components/Main/content-list';
-import '../components/loader-element';
+import '../components/Loader/loader-element';
 import RestaurantAPISource from '../../data/restaurantapi-source';
 import LoaderIndicator from '../../utils/loader-initiator';
 

@@ -1,5 +1,6 @@
 class ReviewItem extends HTMLElement {
   connectedCallback() {
+    this.classList.add('review-item');
     this.render();
   }
 
@@ -17,8 +18,6 @@ class ReviewItem extends HTMLElement {
       <p class="date">${date}</p>
       <p class="content">"${review}"</p>
     `;
-
-    this.classList.add('review-item');
   }
 }
 
