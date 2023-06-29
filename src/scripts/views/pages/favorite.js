@@ -1,5 +1,5 @@
 import '../components/Main/content-list';
-import '../components/loader-element';
+import '../components/Loader/loader-element';
 import FavoriteRestaurantIdb from '../../data/favorite-restaurant-idb';
 import LoaderIndicator from '../../utils/loader-initiator';
 

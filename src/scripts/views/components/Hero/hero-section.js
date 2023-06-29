@@ -1,5 +1,6 @@
 class HeroSection extends HTMLElement {
   connectedCallback() {
+    this.classList.add('hero');
     this.render();
   }
 
@@ -9,8 +10,6 @@ class HeroSection extends HTMLElement {
         <h1>Discover Restaurants in your City</h1>
       </div>
     `;
-
-    this.classList.add('hero');
   }
 }
 

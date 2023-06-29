@@ -1,4 +1,4 @@
-class ContentMenus extends HTMLElement {
+class SectionMenus extends HTMLElement {
   connectedCallback() {
     this.render();
   }
@@ -16,7 +16,7 @@ class ContentMenus extends HTMLElement {
       <div class="menu">
         <h4 class="menu-category__title">${menuCategory}</h4>
         <ul class="menu-list">
-          ${ContentMenus._renderMenus(menuCategory, this._menus)}
+          ${SectionMenus._renderMenus(menuCategory, this._menus)}
         </ul>
       </div>
     `).join('');
@@ -35,4 +35,4 @@ class ContentMenus extends HTMLElement {
   }
 }
 
-customElements.define('content-menus', ContentMenus);
+customElements.define('section-menus', SectionMenus);

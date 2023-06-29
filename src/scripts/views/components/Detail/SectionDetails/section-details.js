@@ -1,4 +1,4 @@
-class ContentDetails extends HTMLElement {
+class SectionDetails extends HTMLElement {
   connectedCallback() {
     this.render();
   }
@@ -29,4 +29,4 @@ class ContentDetails extends HTMLElement {
   }
 }
 
-customElements.define('content-details', ContentDetails);
+customElements.define('section-details', SectionDetails);

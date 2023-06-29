@@ -1,5 +1,5 @@
 import '../components/Detail/content-detail';
-import '../components/like-button';
+import '../components/Detail/like-button';
 import RestaurantAPISource from '../../data/restaurantapi-source';
 import UrlParser from '../../routes/url-parser';
 import TabBarInitiator from '../../utils/tab-bar-initiator';
@@ -28,7 +28,7 @@ const Detail = {
 
       TabBarInitiator.init({
         button: document.querySelector('.tab-bar'),
-        content: document.querySelector('.tab-content'),
+        content: document.querySelector('.tab-section'),
       });
 
       AddReviewInitiator.init({
