@@ -7,9 +7,9 @@ class AddReview extends HTMLElement {
   render() {
     this.innerHTML = `
       <form class="add-review__form" id="addReviewForm">
-        <input class="form-name" type="text" placeholder="username..." required />
-        <textarea class="form-review" placeholder="your review..." required ></textarea>
-        <button type="submit" class="form-submit">ADD REVIEW</button>
+        <input class="form-name" type="text" placeholder="Username" required />
+        <textarea class="form-review" placeholder="Review description..." required ></textarea>
+        <button type="submit" class="form-submit">SUBMIT</button>
       </form>
     `;
   }
