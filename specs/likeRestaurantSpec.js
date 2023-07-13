@@ -32,9 +32,6 @@ describe('Liking A Restaurant', () => {
     expect(document.querySelector('[aria-label="like this restaurant"]')).toBeTruthy();
   });
 
-  /**
-   * TODO: Give different aria-label when button is liked
-   */
   it('should not show the unlike button when the restaurant has not been liked before', async () => {
     await TestFactories.createLikeButtonPresenterWithRestaurant({ id: 1 });
 
@@ -59,10 +56,7 @@ describe('Liking A Restaurant', () => {
     expect(await FavoriteRestaurantIdb.getAllRestaurants()).toEqual([{ id: 1 }]);
   });
 
-  /**
-   * TODO: Fix FavoriteRestaurantsIdb (getRestaurant, putRestaurant) to pass this test
-   */
-  xit('should not add a restaurant when it has no ID', async () => {
+  it('should not add a restaurant when it has no ID', async () => {
     await TestFactories.createLikeButtonPresenterWithRestaurant({});
 
     await clickEvent('#likeButton');

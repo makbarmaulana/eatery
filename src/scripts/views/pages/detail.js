@@ -3,7 +3,7 @@ import '../components/Detail/like-button';
 import RestaurantAPISource from '../../data/restaurantapi-source';
 import UrlParser from '../../routes/url-parser';
 import TabBarInitiator from '../../utils/tab-bar-initiator';
-import LikeButtonInitiator from '../../utils/like-button-initiator';
+import LikeButtonPresenter from '../../utils/like-button-presenter';
 import AddReviewInitiator from '../../utils/add-review-initiator';
 import LoaderIndicator from '../../utils/loader-initiator';
 
@@ -36,7 +36,7 @@ const Detail = {
         restaurantId: restaurant.id,
       });
 
-      LikeButtonInitiator.init({
+      LikeButtonPresenter.init({
         button: document.querySelector('#likeButton'),
         restaurant: {
           id: restaurant.id,

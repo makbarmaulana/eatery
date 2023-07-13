@@ -1,6 +1,6 @@
 import FavoriteRestaurantIdb from '../data/favorite-restaurant-idb';
 
-const LikeButtonInitiator = {
+const LikeButtonPresenter = {
   async init({ button, restaurant }) {
     this._button = button;
     this._restaurant = restaurant;
@@ -13,9 +13,9 @@ const LikeButtonInitiator = {
     const isRestaurantExist = await this._isRestaurantExist(id);
 
     if (isRestaurantExist) {
-      this._renderLiked(id);
+      this._renderLike(id);
     } else {
-      this._renderLike();
+      this._renderUnlike();
     }
   },
 
@@ -24,8 +24,9 @@ const LikeButtonInitiator = {
     return !!restaurant;
   },
 
-  _renderLike() {
+  _renderUnlike() {
     this._updateHeartIconClasses('fa-heart-o', 'fa-heart');
+    this._updateAriaLabel('like this restaurant');
 
     this._button.addEventListener('click', async () => {
       await FavoriteRestaurantIdb.putRestaurant(this._restaurant);
@@ -33,8 +34,9 @@ const LikeButtonInitiator = {
     });
   },
 
-  _renderLiked(id) {
+  _renderLike(id) {
     this._updateHeartIconClasses('fa-heart', 'fa-heart-o');
+    this._updateAriaLabel('unlike this restaurant');
 
     this._button.addEventListener('click', async () => {
       await FavoriteRestaurantIdb.deleteRestaurant(id);
@@ -47,6 +49,10 @@ const LikeButtonInitiator = {
     heartIcon.classList.remove(remove);
     heartIcon.classList.add(add);
   },
+
+  _updateAriaLabel(label) {
+    this._button.setAttribute('aria-label', label);
+  },
 };
 
-export default LikeButtonInitiator;
+export default LikeButtonPresenter;

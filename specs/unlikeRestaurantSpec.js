@@ -25,16 +25,13 @@ describe('Unliking A Restaurant', () => {
     await FavoriteRestaurantIdb.deleteRestaurant(1);
   });
 
-  /**
-   * TODO: Fix aria-label in like button
-   */
-  xit('should display unlike widget when the restaurant has been liked', async () => {
+  it('should display unlike widget when the restaurant has been liked', async () => {
     await TestFactories.createLikeButtonPresenterWithRestaurant({ id: 1 });
 
     expect(document.querySelector('[aria-label="unlike this restaurant"]')).toBeTruthy();
   });
 
-  xit('should not display like widget when the restaurant has been liked', async () => {
+  it('should not display like widget when the restaurant has been liked', async () => {
     await TestFactories.createLikeButtonPresenterWithRestaurant({ id: 1 });
 
     expect(document.querySelector('[aria-label="like this restaurant"]')).toBeFalsy();
