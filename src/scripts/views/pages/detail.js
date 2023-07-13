@@ -6,6 +6,7 @@ import TabBarInitiator from '../../utils/tab-bar-initiator';
 import LikeButtonPresenter from '../../utils/like-button-presenter';
 import AddReviewInitiator from '../../utils/add-review-initiator';
 import LoaderIndicator from '../../utils/loader-initiator';
+import FavoriteRestaurantIdb from '../../data/favorite-restaurant-idb';
 
 const Detail = {
   async render() {
@@ -38,6 +39,7 @@ const Detail = {
 
       LikeButtonPresenter.init({
         button: document.querySelector('#likeButton'),
+        favoriteRestaurants: FavoriteRestaurantIdb,
         restaurant: {
           id: restaurant.id,
           name: restaurant.name,

@@ -1,9 +1,8 @@
-import FavoriteRestaurantIdb from '../data/favorite-restaurant-idb';
-
 const LikeButtonPresenter = {
-  async init({ button, restaurant }) {
+  async init({ button, restaurant, favoriteRestaurants }) {
     this._button = button;
     this._restaurant = restaurant;
+    this._favoriteRestaurant = favoriteRestaurants;
 
     await this._renderButton();
   },
@@ -20,7 +19,7 @@ const LikeButtonPresenter = {
   },
 
   async _isRestaurantExist(id) {
-    const restaurant = await FavoriteRestaurantIdb.getRestaurant(id);
+    const restaurant = await this._favoriteRestaurant.getRestaurant(id);
     return !!restaurant;
   },
 
@@ -29,7 +28,7 @@ const LikeButtonPresenter = {
     this._updateAriaLabel('like this restaurant');
 
     this._button.addEventListener('click', async () => {
-      await FavoriteRestaurantIdb.putRestaurant(this._restaurant);
+      await this._favoriteRestaurant.putRestaurant(this._restaurant);
       this._renderButton();
     });
   },
@@ -39,7 +38,7 @@ const LikeButtonPresenter = {
     this._updateAriaLabel('unlike this restaurant');
 
     this._button.addEventListener('click', async () => {
-      await FavoriteRestaurantIdb.deleteRestaurant(id);
+      await this._favoriteRestaurant.deleteRestaurant(id);
       this._renderButton();
     });
   },
