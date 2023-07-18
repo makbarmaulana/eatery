@@ -9,7 +9,7 @@ class AppBar extends HTMLElement {
   render() {
     this.innerHTML = `
       <div class="app-bar__brand">
-        <img  src="./eatery-white.png" alt="Eatery Logo">
+        <img src="./eatery-white.png" alt="Eatery Logo">
       </div>
 
       <nav id="navigationDrawer" class="app-bar__nav">

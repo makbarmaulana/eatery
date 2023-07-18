@@ -27,7 +27,12 @@ class ContentDetail extends HTMLElement {
 
     this.innerHTML = `
       <div class="thumbnail">
-        <img src="${CONFIG.BASE_IMAGE_URL('small', pictureId)}" alt="${name}" loading="lazy">
+        <img
+          class="lazyload"
+          src="./placeholder/placeholder.jpg"
+          data-src="${pictureId ? CONFIG.BASE_IMAGE_URL('small', pictureId) : './placeholder/no-image.jpg'}"
+          alt="${name}"
+        >
       </div>
 
       <div class="tab-bar">

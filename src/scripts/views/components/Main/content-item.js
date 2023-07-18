@@ -19,7 +19,13 @@ class ContentItem extends HTMLElement {
     this.innerHTML = `
         <a href="/#/detail/${id}" aria-label="${name}">
           <div class="thumbnail">
-            <img src="${CONFIG.BASE_IMAGE_URL('small', pictureId)}" alt="${name}" loading="lazy">
+            <img
+              class="lazyload"
+              src="./placeholder/placeholder.jpg"
+              data-src="${pictureId ? CONFIG.BASE_IMAGE_URL('small', pictureId) : './placeholder/no-image.jpg'}"
+              alt="${name}"
+            >
+      </div>
           </div>
 
           <div class="detail">
