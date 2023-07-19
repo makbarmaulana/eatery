@@ -6,7 +6,6 @@ import '../styles/responsive.scss';
 import './views/components/Header/app-bar';
 import './views/components/Footer/footer-bar';
 import App from './views/app';
-import swRegister from './sw-register';
 
 const app = new App({
   button: document.querySelector('#hamburgerMenu'),
@@ -19,7 +18,13 @@ window.addEventListener('hashchange', () => {
   app.renderPage();
 });
 
-window.addEventListener('DOMContentLoaded', () => {
+window.addEventListener('DOMContentLoaded', async () => {
   app.renderPage();
-  swRegister();
+
+  try {
+    const { default: swRegister } = await import('./sw-register');
+    swRegister();
+  } catch (error) {
+    console.log('Failed to import sw-register', error);
+  }
 });
