@@ -4,12 +4,13 @@
   "description": "Eatery is a website that helps you discover restaurants in your city.",
   "main": "index.js",
   "scripts": {
+    "test": "karma start",
+    "lint": "eslint src",
     "start-dev": "webpack serve --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
+    "build-image": "node sharp.js",
     "serve": "http-server dist --port 9000",
-    "build-serve": "npm run build && npm run serve",
-    "test": "karma start",
-    "lint": "eslint src"
+    "build-serve": "npm run build && npm run serve"
   },
   "keywords": [],
   "author": "makbarmaulana",
@@ -39,6 +40,7 @@
     "karma-webpack": "^5.0.0",
     "sass": "^1.63.4",
     "sass-loader": "^13.3.2",
+    "sharp": "^0.32.3",
     "style-loader": "^3.3.3",
     "webpack": "^5.87.0",
     "webpack-bundle-analyzer": "^4.9.0",
