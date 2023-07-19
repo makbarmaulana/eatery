@@ -9,24 +9,16 @@ if (!fs.existsSync(destination)) {
   fs.mkdirSync(destination);
 }
 
-fs.readdirSync(target).forEach((image) => {
-  // change image size with width 800px, and add prefix -large.jpg
-  sharp(`${target}/${image}`)
-    .resize(800)
-    .toFile(
-      path.resolve(
-        __dirname,
-        `${destination}/${image.split('.').slice(0, -1).join('.')}-large.jpg`,
-      ),
-    );
+const resizeImage = (image, size, suffix) => {
+  const [imageName, extension] = image.split('.');
+  const outputPath = path.resolve(destination, `${imageName}-${suffix}.${extension}`);
 
-  // change image size with width 480px, and add prefix -small.jpg
-  sharp(`${target}/${image}`)
-    .resize(480)
-    .toFile(
-      path.resolve(
-        __dirname,
-        `${destination}/${image.split('.').slice(0, -1).join('.')}-small.jpg`,
-      ),
-    );
+  sharp(path.resolve(target, image))
+    .resize(size)
+    .toFile(outputPath);
+};
+
+fs.readdirSync(target).forEach((image) => {
+  resizeImage(image, 800, 'large');
+  resizeImage(image, 480, 'small');
 });
