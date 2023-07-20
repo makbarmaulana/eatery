@@ -5,6 +5,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ImageminWebpackPlugin = require('imagemin-webpack-plugin').default;
 const ImageminMozjpeg = require('imagemin-mozjpeg');
 const ImageminPngquant = require('imagemin-pngquant');
+const DotenvWebpackPlugin = require('dotenv-webpack');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const ResizeImageWebpackPlugin = require('./ResizeImageWebpackPlugin');
 
@@ -67,6 +68,11 @@ module.exports = {
         { size: 800, suffix: 'large' },
         { size: 480, suffix: 'small' },
       ],
+    }),
+    new DotenvWebpackPlugin({
+      path: path.resolve(__dirname, '.env'),
+      systemvars: true,
+      safe: true,
     }),
     new CleanWebpackPlugin(),
   ],
