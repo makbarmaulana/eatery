@@ -1,4 +1,7 @@
 .vscode
 node_modules
+package-lock.json
 dist
 e2e/outputs
+.env
+.env.example
