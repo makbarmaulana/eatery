@@ -1,5 +1,4 @@
 const { merge } = require('webpack-merge');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const WorkboxWebpackPlugin = require('workbox-webpack-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
@@ -79,7 +78,6 @@ module.exports = merge(common, {
     new WorkboxWebpackPlugin.GenerateSW({
       swDest: './sw.bundle.js',
     }),
-    new CleanWebpackPlugin(),
     new BundleAnalyzerPlugin(),
   ],
 });

@@ -5,6 +5,8 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ImageminWebpackPlugin = require('imagemin-webpack-plugin').default;
 const ImageminMozjpeg = require('imagemin-mozjpeg');
 const ImageminPngquant = require('imagemin-pngquant');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const ResizeImageWebpackPlugin = require('./ResizeImageWebpackPlugin');
 
 module.exports = {
   entry: {
@@ -58,5 +60,14 @@ module.exports = {
         }),
       ],
     }),
+    new ResizeImageWebpackPlugin({
+      source: 'src/public/images',
+      output: 'dist/images',
+      resizeOptions: [
+        { size: 800, suffix: 'large' },
+        { size: 480, suffix: 'small' },
+      ],
+    }),
+    new CleanWebpackPlugin(),
   ],
 };
