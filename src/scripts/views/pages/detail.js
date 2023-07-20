@@ -3,9 +3,10 @@ import '../components/Detail/like-button';
 import RestaurantAPISource from '../../data/restaurantapi-source';
 import UrlParser from '../../routes/url-parser';
 import TabBarInitiator from '../../utils/tab-bar-initiator';
-import LikeButtonInitiator from '../../utils/like-button-initiator';
+import LikeButtonPresenter from '../../utils/like-button-presenter';
 import AddReviewInitiator from '../../utils/add-review-initiator';
 import LoaderIndicator from '../../utils/loader-initiator';
+import FavoriteRestaurantIdb from '../../data/favorite-restaurant-idb';
 
 const Detail = {
   async render() {
@@ -18,6 +19,15 @@ const Detail = {
   },
 
   async afterRender() {
+    // lazy load font awesome
+    let scriptElement = document.querySelector('script[src="https://use.fontawesome.com/b070c8f1df.js"]');
+
+    if (!scriptElement) {
+      scriptElement = document.createElement('script');
+      scriptElement.src = 'https://use.fontawesome.com/b070c8f1df.js';
+      document.body.appendChild(scriptElement);
+    }
+
     const restaurantContainer = document.querySelector('content-detail');
     LoaderIndicator.init({ container: restaurantContainer });
 
@@ -36,8 +46,9 @@ const Detail = {
         restaurantId: restaurant.id,
       });
 
-      LikeButtonInitiator.init({
+      LikeButtonPresenter.init({
         button: document.querySelector('#likeButton'),
+        favoriteRestaurants: FavoriteRestaurantIdb,
         restaurant: {
           id: restaurant.id,
           name: restaurant.name,
